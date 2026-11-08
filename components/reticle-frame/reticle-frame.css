@@ -1,0 +1,58 @@
+/* Reticle frame: four 2 px corner brackets frame the real subject. When a result
+   arrives the brackets close in once (0.4 s) and then hold still. Colours and type
+   come from CSS variables with fallbacks, so the host theme can override them. */
+
+.ins-reticle {
+  --ins-graphite: var(--graphite, #82848b);
+  --ins-text: var(--text, #050508);
+  --ins-muted: var(--muted, #45474f);
+  --ins-mono: var(--mono, "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace);
+  position: relative;
+  padding: 28px;
+  color: var(--ins-text);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ins-reticle {
+    --ins-graphite: var(--graphite, #5c5f6b);
+    --ins-text: var(--text, #f2f1ec);
+    --ins-muted: var(--muted, #9a9ca6);
+  }
+}
+
+.ins-reticle > .ins-rc {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 0 solid var(--ins-graphite);
+  pointer-events: none;
+}
+.ins-reticle > .ins-rc.tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.ins-reticle > .ins-rc.tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.ins-reticle > .ins-rc.bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.ins-reticle > .ins-rc.br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+.ins-reticle > .ins-label {
+  position: absolute;
+  top: 4px;
+  left: 36px;
+  margin: 0;
+  font: 500 12px/1.4 var(--ins-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ins-muted);
+}
+
+@keyframes ins-lock-on {
+  from { transform: scale(1.35); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.ins-reticle.lock > .ins-rc { animation: ins-lock-on 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.ins-reticle.lock > .ins-rc.tl { transform-origin: 100% 100%; }
+.ins-reticle.lock > .ins-rc.tr { transform-origin: 0 100%; }
+.ins-reticle.lock > .ins-rc.bl { transform-origin: 100% 0; }
+.ins-reticle.lock > .ins-rc.br { transform-origin: 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ins-reticle.lock > .ins-rc { animation: none; }
+}

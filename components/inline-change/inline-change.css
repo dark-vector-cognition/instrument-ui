@@ -1,0 +1,65 @@
+/* Inline change: one rewritten sentence with its edits in place. Struck words were in
+   the earlier text, underlined words on a shaded ground are new. Each mark differs in
+   shape as well as colour, and each carries a screen-reader label. */
+
+.ins-chg {
+  --ins-text: var(--text, #050508);
+  --ins-muted: var(--muted, #45474f);
+  --ins-error: var(--error, #b42318);
+  --ins-panel: var(--panel, #e6e4dd);
+  --ins-mono: var(--mono, "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace);
+  --ins-sans: var(--sans, "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  position: relative;
+  margin: 0;
+  max-width: 680px;
+  color: var(--ins-text);
+  font: 400 18px/1.6 var(--ins-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ins-chg {
+    --ins-text: var(--text, #f2f1ec);
+    --ins-muted: var(--muted, #9a9ca6);
+    --ins-error: var(--error, #ff8a7a);
+    --ins-panel: var(--panel, #0e0f14);
+  }
+}
+
+.ins-chg p { margin: 0.2em 0; overflow-wrap: anywhere; }
+
+.ins-chg ins {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--ins-text);
+  background: var(--ins-panel);
+  color: var(--ins-text);
+  padding: 0 2px;
+}
+.ins-chg del {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: var(--ins-error);
+  color: var(--ins-muted);
+}
+.ins-chg del + ins { margin-left: 0.25em; }
+
+.ins-chg .ins-legend {
+  margin: 14px 0 0;
+  font: 400 14px/1.5 var(--ins-mono);
+  color: var(--ins-muted);
+}
+.ins-chg .ins-legend ins,
+.ins-chg .ins-legend del { white-space: nowrap; }
+
+.ins-chg .ins-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

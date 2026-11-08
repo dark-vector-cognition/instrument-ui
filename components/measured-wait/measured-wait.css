@@ -1,0 +1,102 @@
+/* Measured wait: waiting is shown as a measurement, not a spinner. Elapsed seconds
+   are counted against a stated limit on a tick ruler. Nothing loops for decoration. */
+
+.ins-wait {
+  --ins-graphite: var(--graphite, #82848b);
+  --ins-text: var(--text, #050508);
+  --ins-muted: var(--muted, #45474f);
+  --ins-signal: var(--signal, #1f7fe0);
+  --ins-error: var(--error, #b42318);
+  --ins-panel: var(--panel, #e6e4dd);
+  --ins-mono: var(--mono, "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace);
+  --ins-sans: var(--sans, "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  display: block;
+  max-width: 560px;
+  color: var(--ins-text);
+  font: 400 16px/1.5 var(--ins-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ins-wait {
+    --ins-graphite: var(--graphite, #5c5f6b);
+    --ins-text: var(--text, #f2f1ec);
+    --ins-muted: var(--muted, #9a9ca6);
+    --ins-signal: var(--signal, #44aaff);
+    --ins-error: var(--error, #ff8a7a);
+    --ins-panel: var(--panel, #0e0f14);
+  }
+}
+
+.ins-wait .ins-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0 0 8px;
+}
+.ins-wait .ins-label {
+  font: 500 12px/1.4 var(--ins-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ins-muted);
+}
+.ins-wait .ins-count {
+  font: 700 28px/1 var(--ins-mono);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ins-text);
+}
+.ins-wait .ins-count small {
+  font: 500 13px/1 var(--ins-mono);
+  color: var(--ins-muted);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+
+/* The scale: a 10 px ruler of 1 px ticks every 18 px, in graphite. */
+.ins-wait .ins-ruler {
+  position: relative;
+  height: 10px;
+  background: var(--ins-graphite);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='10'%3E%3Crect width='1' height='10'/%3E%3C/svg%3E") repeat-x left center;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='10'%3E%3Crect width='1' height='10'/%3E%3C/svg%3E") repeat-x left center;
+}
+
+/* The reading: a 2 px bar under the ruler that grows with elapsed time. */
+.ins-wait .ins-bar {
+  height: 2px;
+  margin-top: 4px;
+  background: var(--ins-panel);
+}
+.ins-wait .ins-bar > i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--ins-text);
+  transition: width 0.9s linear;
+}
+.ins-wait.done .ins-bar > i { background: var(--ins-signal); }
+.ins-wait.over .ins-bar > i { background: var(--ins-error); }
+
+.ins-wait .ins-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 8px 0 0;
+  font: 400 13px/1.5 var(--ins-mono);
+  color: var(--ins-muted);
+}
+.ins-wait.over .ins-foot .ins-state {
+  color: var(--ins-error);
+  border-left: 3px solid currentColor;
+  padding-left: 8px;
+}
+.ins-wait.done .ins-foot .ins-state {
+  color: var(--ins-text);
+  border-left: 3px solid currentColor;
+  padding-left: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ins-wait .ins-bar > i { transition: none; }
+}
