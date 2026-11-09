@@ -2,6 +2,8 @@
 
 Three dependency-free React components in the DARKVECTOR Instrument style, packaged for the Layro marketplace (layro.dev) so coding agents can search and install them over MCP.
 
+Source of truth: this repo. Layro re-syncs from `registry.json` on every push to `main`.
+
 | Slug | What it is |
 | --- | --- |
 | `reticle-frame` | Four corner brackets that frame the real subject; close in once on arrival |
