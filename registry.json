@@ -8,15 +8,36 @@
       "type": "registry:ui",
       "title": "Reticle Frame",
       "description": "Four corner brackets that frame the real subject of a page. Closes in once when a result arrives, then holds still. Square, dependency-free, reduced-motion safe.",
-      "categories": ["cards", "layout"],
+      "categories": [
+        "cards",
+        "layout"
+      ],
       "dependencies": [],
       "files": [
-        { "path": "components/reticle-frame/reticle-frame.tsx", "type": "registry:ui" },
-        { "path": "components/reticle-frame/reticle-frame.css", "type": "registry:ui" }
+        {
+          "path": "components/reticle-frame/reticle-frame.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/reticle-frame/reticle-frame.css",
+          "type": "registry:ui"
+        }
       ],
       "meta": {
-        "version": "0.1.2",
-        "preview": { "pointer": false, "steps": [{ "wait": 400 }, { "hold": 2200 }] }
+        "version": "0.1.3",
+        "preview": {
+          "pointer": false,
+          "steps": [
+            {
+              "action": "wait",
+              "ms": 400
+            },
+            {
+              "action": "hold",
+              "ms": 2200
+            }
+          ]
+        }
       }
     },
     {
@@ -24,15 +45,36 @@
       "type": "registry:ui",
       "title": "Measured Wait",
       "description": "A waiting state that counts elapsed seconds against a stated limit on a tick ruler, instead of a spinner. Turns to the error colour past the limit; fills in signal when done.",
-      "categories": ["feedback", "progress"],
+      "categories": [
+        "feedback",
+        "progress"
+      ],
       "dependencies": [],
       "files": [
-        { "path": "components/measured-wait/measured-wait.tsx", "type": "registry:ui" },
-        { "path": "components/measured-wait/measured-wait.css", "type": "registry:ui" }
+        {
+          "path": "components/measured-wait/measured-wait.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/measured-wait/measured-wait.css",
+          "type": "registry:ui"
+        }
       ],
       "meta": {
-        "version": "0.1.2",
-        "preview": { "pointer": false, "steps": [{ "wait": 300 }, { "hold": 4000 }] }
+        "version": "0.1.3",
+        "preview": {
+          "pointer": false,
+          "steps": [
+            {
+              "action": "wait",
+              "ms": 300
+            },
+            {
+              "action": "hold",
+              "ms": 4000
+            }
+          ]
+        }
       }
     },
     {
@@ -40,16 +82,40 @@
       "type": "registry:ui",
       "title": "Inline Change",
       "description": "One rewritten sentence with its edits in place: struck words were in the earlier text, underlined words on a shaded ground are new. Word diff built in; screen-reader labels on every mark.",
-      "categories": ["typography", "data-display"],
+      "categories": [
+        "typography",
+        "data-display"
+      ],
       "dependencies": [],
       "files": [
-        { "path": "components/inline-change/inline-change.tsx", "type": "registry:ui" },
-        { "path": "components/inline-change/inline-change.css", "type": "registry:ui" },
-        { "path": "components/inline-change/word-diff.ts", "type": "registry:lib" }
+        {
+          "path": "components/inline-change/inline-change.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/inline-change/inline-change.css",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/inline-change/word-diff.ts",
+          "type": "registry:lib"
+        }
       ],
       "meta": {
-        "version": "0.1.2",
-        "preview": { "pointer": false, "steps": [{ "wait": 300 }, { "hold": 2500 }] }
+        "version": "0.1.3",
+        "preview": {
+          "pointer": false,
+          "steps": [
+            {
+              "action": "wait",
+              "ms": 300
+            },
+            {
+              "action": "hold",
+              "ms": 2500
+            }
+          ]
+        }
       }
     }
   ]
