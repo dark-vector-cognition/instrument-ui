@@ -2,8 +2,6 @@
 
 Three dependency-free React components in the DARKVECTOR Instrument style, packaged for the Layro marketplace (layro.dev) so coding agents can search and install them over MCP.
 
-Source of truth: this repo. Layro re-syncs from `registry.json` on every push to `main`.
-
 | Slug | What it is |
 | --- | --- |
 | `reticle-frame` | Four corner brackets that frame the real subject; close in once on arrival |
@@ -11,6 +9,16 @@ Source of truth: this repo. Layro re-syncs from `registry.json` on every push to
 | `inline-change` | One sentence with word-level edits in place; word diff built in |
 
 Each component is one `.tsx` plus one `.css`, plain React and TypeScript, no Tailwind, no runtime dependencies. Theme by overriding `--text`, `--muted`, `--graphite`, `--signal`, `--error`, `--panel`, `--mono`, `--sans` on any ancestor. Dark mode follows `prefers-color-scheme`.
+
+## Install without Layro
+
+The same registry is served from filings.tools in shadcn's registry format, built by `scripts/build-registry.mjs` into `apps/filings/public/r`:
+
+```
+npx shadcn@latest add https://filings.tools/r/measured-wait.json
+```
+
+Index: https://filings.tools/r/registry.json. Files land in `components/instrument/<name>/`. Run `pnpm --filter @clone/instrument-ui build:registry` after any component change; the test fails when the output is stale.
 
 ## Publishing
 
